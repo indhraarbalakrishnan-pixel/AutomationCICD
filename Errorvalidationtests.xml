@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel ="methods" name="Suite" thread-count="5">
+<groups>
+<run>
+<include name="ErrorHandling"/>
+</run>
+</groups>
+  <test  name="Stand Alone Submit">
+    <classes>
+      <class name="rahulshettyacademy.tests.StandaloneSubmit"/>
+      
+    </classes>
+  </test> <!-- Test -->
+  
+   <test  name="Error Validation">
+    <classes>
+      <class name="rahulshettyacademy.tests.Errorvalidations"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
