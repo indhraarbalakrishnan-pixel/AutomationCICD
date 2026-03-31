@@ -54,9 +54,19 @@ public class Productcatalogue extends Abstractcomponent{
 	
 	public void addToCart(String Productname1)
 	{
-		getProductByList(Productname1).findElement(addcart).click();
-		elementsToAppear(toastMessage);
-		waitToDisappear(waitelem);
+		public void addToCart(String Productname1) {
+
+    WebElement prod = getProductByList(productName);
+	WebElement addToCartBtn = prod.findElement(addcart);
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.visibilityOfAllElements(products));
+    wait.until(ExpectedConditions.invisibilityOfElementLocated(invisible));
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addToCartBtn);
+    wait.until(ExpectedConditions.elementToBeClickable(addToCartBtn));
+    addToCartBtn.click();
+    wait.until(ExpectedConditions.visibilityOfElementLocated(toastMessage));
+    wait.until(ExpectedConditions.invisibilityOfElementLocated(toastMessage));
+}
 	}
 	
 public WebElement getProductByList1(String Productname)
