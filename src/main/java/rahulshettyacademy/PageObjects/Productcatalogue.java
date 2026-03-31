@@ -66,6 +66,7 @@ public class Productcatalogue extends Abstractcomponent{
     wait.until(ExpectedConditions.visibilityOfAllElements(products));
     wait.until(ExpectedConditions.invisibilityOfElementLocated(invisible));
     wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ng-animating")));
+	   // Scroll properly (center of screen)
     ((JavascriptExecutor) driver).executeScript(
         "arguments[0].scrollIntoView({block: 'center'});", addToCartBtn);
     try {
@@ -83,6 +84,7 @@ public class Productcatalogue extends Abstractcomponent{
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartBtn);
     }
     wait.until(ExpectedConditions.visibilityOfElementLocated(toastMessage));
+	//9. Wait for toast to disappear (critical for next iteration)
     wait.until(ExpectedConditions.invisibilityOfElementLocated(toastMessage));
 }
 
