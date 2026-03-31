@@ -56,7 +56,7 @@ public class Productcatalogue extends Abstractcomponent{
 	public void addToCart(String Productname1)
 	{
 
-    WebElement prod = getProductByList(productName);
+    WebElement prod = getProductByList(Productname1);
 	WebElement addToCartBtn = prod.findElement(addcart);
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     wait.until(ExpectedConditions.visibilityOfAllElements(products));
