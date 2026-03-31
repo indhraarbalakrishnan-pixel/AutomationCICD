@@ -12,15 +12,13 @@ public class Gittest {
 		System.out.println("print3");
 	}
 	
-<<<<<<< HEAD
+
 	@Test
-	public void gitesting()
+	public void testing()
 	{
 		System.out.println("print4");
 		System.out.println("print5");
 		System.out.println("print6");
 	}
 	
-=======
->>>>>>> 4abbb94f02bc34818a26e774a8a1a46a19947f14
 }
