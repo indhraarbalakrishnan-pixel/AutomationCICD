@@ -52,9 +52,8 @@ public class Productcatalogue extends Abstractcomponent{
 		
 	}
 	
-	public void addToCart(String Productname1)
-	{
-		public void addToCart(String Productname1) {
+	
+	public void addToCart(String Productname1) {
 
     WebElement prod = getProductByList(productName);
 	WebElement addToCartBtn = prod.findElement(addcart);
@@ -67,7 +66,7 @@ public class Productcatalogue extends Abstractcomponent{
     wait.until(ExpectedConditions.visibilityOfElementLocated(toastMessage));
     wait.until(ExpectedConditions.invisibilityOfElementLocated(toastMessage));
 }
-	}
+	
 	
 public WebElement getProductByList1(String Productname)
 	
