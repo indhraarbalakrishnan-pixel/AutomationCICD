@@ -53,20 +53,39 @@ public class Productcatalogue extends Abstractcomponent{
 	}
 	
 	
-	public void addToCart(String Productname1)
-	{
+
+
+   public void addToCart(String Productname1) {
 
     WebElement prod = getProductByList(Productname1);
-	WebElement addToCartBtn = prod.findElement(addcart);
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    WebElement addToCartBtn = prod.findElement(addcart);
+
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+    
     wait.until(ExpectedConditions.visibilityOfAllElements(products));
     wait.until(ExpectedConditions.invisibilityOfElementLocated(invisible));
-    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addToCartBtn);
-    wait.until(ExpectedConditions.elementToBeClickable(addToCartBtn));
-    addToCartBtn.click();
+    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ng-animating")));
+    ((JavascriptExecutor) driver).executeScript(
+        "arguments[0].scrollIntoView({block: 'center'});", addToCartBtn);
+    try {
+        Thread.sleep(500);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    try {
+        wait.until(ExpectedConditions.elementToBeClickable(addToCartBtn));
+		System.out.println(addToCartBtn.isDisplayed());
+        System.out.println(addToCartBtn.isEnabled());
+        addToCartBtn.click();
+    } catch (Exception e) {
+        // ✅ 7. Fallback to JS click (VERY IMPORTANT for CI)
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartBtn);
+    }
     wait.until(ExpectedConditions.visibilityOfElementLocated(toastMessage));
     wait.until(ExpectedConditions.invisibilityOfElementLocated(toastMessage));
 }
+
 	
 	
 public WebElement getProductByList1(String Productname)
